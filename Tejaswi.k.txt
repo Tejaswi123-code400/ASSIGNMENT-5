@@ -1,0 +1,384 @@
+1) Write a c program to convert infix to prifix conversation using stack.
+
+
+
+#include<stdio.h>
+char stack[20]
+int top= -1;
+void push(char x)
+{
+  stack[++top]=x;
+}
+char pop()
+{
+  if(top==-1)
+     return-1;
+  else
+     return stack[top-1];
+}
+int priority(char x)
+{
+  if(x=='(')
+      return 0;
+  if(x=='+'||x=='-')
+      return 1;
+  if(x=='*'||x=='/')
+      return 2;
+}
+main()
+{
+   char exp[20];
+   char *e,x;
+   printf("enter the expression::");
+   scanf("%s",exp);
+   e+exp;
+   while(*e!='\0')
+   {
+      if(isanum(*e));
+          printf("%c",*e);
+	else if(*e=='(')
+	  push(*e);
+	else if(*e==')')
+	{
+	 while((x=pop())!='(')
+	    printf("%c",pop());
+	}
+	else
+	{
+	  while(priority(stack[top])>=priority(*e))
+	    printf("%c",pop());
+	  push(*e);
+	}
+	e++;
+   }
+   while(top!=-1)
+   {
+     printf("%c",pop());
+    }
+}
+
+
+OUT PUT:
+Enter=z+b*c
+zbc*+
+
+
+
+
+
+
+
+
+
+
+2)write a prograam to reverse string using stack
+
+
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+#include<limits.h>
+
+
+struc stack
+{
+  int top;
+  capacity;
+  char*array;
+};
+#creating a stack
+#initial stack of size is 0
+struc stack*creat stack(capacity)
+{
+   struc stack**stack=(struc stack*)malloc(size of struct stack));
+   stack->capacity=capacity;
+   stack->top=-1;
+   stack->array=(char*)malloc(stac->capacity*sizeof(char));
+   return stack;
+}
+
+#stack is full when top is equal to the last index
+int is full(struc stack*stack)
+{
+return stack->top==-1
+}
+
+#function to add an item to stack.
+#it increases top by 1
+void push(struc stac*stack,char item)
+{
+#function to remove an item from stack.
+#it decreases top by 1
+char pop(struc stack*stack)
+{
+  if(isempty(stack))
+     returnINT_MIN;
+  return stack->array[stack->top--];
+}
+#a stack based function to reverse a string
+void reverse(char str[])
+{
+#creat a stack of capacity
+#equal to length of string
+int n=strlen(str);
+struc stack*stack=creatstack(n);
+
+#push all characters of string to stack
+int i;
+for(i=0;<n;i++)
+  push(stack,str[i];
+
+#pop all characters of string and
+#put them back to str
+for (i=0;i<n;i++)
+   str[i]=pop(stack);
+}
+int main()
+{
+  char str[]="tejaswi koneru";
+  reverse(str);
+  printf("reversed string is %s,str);
+
+  return 0;
+}
+
+OUT PUT:
+The reverse string is "urenok iwsajet"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3)write a c program to implement queue using two stacks.
+
+
+
+#include<stdio.h>
+#include<stdlib.h>
+struc node
+{
+    int data;
+    struct node*next;
+};
+void push(struct node**top,int data);
+int pop(struct node**top);
+struct queue
+{
+     struct node*stack1;
+     struct node*stack2;
+};
+void equeue(struct queue*q,int x)
+{
+     push(&q->stack1,x);
+}
+  intx;
+  if(q->stack1==null&&q->stack2==null){
+     printf("queue is empty");
+     return;
+  }
+  if(q->stack2==null){
+     while(q->stack1!=null){
+     x=pop(&q->stack1);
+     push(&q->stack1);
+     }
+  }
+  x=pop(&q->stack2);
+  printf("%d\n",x);
+  }
+  void push(struct node**top,int data)
+  { 
+     struct node*newnode=(struct node*)malloc(size of struct node));
+         if(newnode==NULL){
+            printf("Stack overflow\n");
+            return 0;
+         }
+       newnode->data=data;
+       newnode->next=(*top);
+       (*top)=newnode;
+  }
+  int pop(struct node**top)
+  {
+     int buff;
+     struct node*t;
+     if(*top==null){
+        printf("stack underflow \n");
+        return;
+   }
+   else
+    {
+      t=*top;
+      buff=t->next;
+      free(t);
+      return buf;
+    }
+  }
+  void display(struct node*top1,struct node*top2)
+  {  
+     while(top1!=null)
+    {
+       printf("%d\n",top1->data);
+       top!=top1->next;
+    }
+      while(top2!=null)
+       {
+	  printf("%d\n",top2->data);
+          top2=top2->next;
+       }
+     }
+     int main()
+     {
+       struct queue*q=(struct queue*)malloc(sizeof(struct queue));
+       int f=0,a;
+       char ch='y';
+       q->stack1=null;
+       q->stack2=null;
+       while(ch=='y'||ch=='y'){
+           printf("enter your choice\n1.add to queue\n2.remove
+                from queue\n3.display\n4.exit\n");
+           scanf("%d",&f);
+           switch(f){
+	       case1:printf("enter the element to be added to queue\n");
+			scanf("%d",&a);
+			enqueue(q,a);
+			break;
+	       case2:dequeue(q);
+			break;
+	       case3:display(q->stack1,q->stack2);
+			break;
+	       case4:exit(1);
+			break;
+	       default:printf("invalid\n");
+
+
+
+
+
+
+
+
+
+
+
+4)write a program from insertion and deletion in BST.
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct tree node 
+{
+  int data;
+  struct tree node*left,*right;
+};
+struct tree node*root=null;
+
+/*creat a new node with the given data*/
+struct tree node*create node(int data)
+ {
+     struct tree node*new node;
+     new node=(struct tree node*)malloc(sizeof(struct tree node));
+     new node->data=data;
+     new node->left=null;
+     new node->right=null;
+     return(new node);
+ }
+/*insertion in binay search tree*/
+void insertion(struct tree node**node,int data){
+      if(*node==null){
+	   *node=create node(data);
+      }else if(data<(*node)->data){
+	    insertion(&(*node)->left,data);
+      }else if(data>(*node)->data){
+	    insertion(&(*node)->right,data);
+      }
+ }
+
+/*deletion in binary search tree*/
+
+
+void deletion(struct tree node**node,struct tree node**parent,int data){
+      struct tree node*tmpnode,*tmp parent;
+      if(*node==null)
+ 	    return;
+      if((*node)->data==data){
+	    /*deleting the leaf node*/
+	    if(!(*node)->left&&!(*node)->right){
+		if(parent){
+		     /*delete leaf node*/
+		     if((*parent)->left==*node)
+			   (*parent)->left==null;
+		     else
+			   (*parent)->right==null;
+		     free(*node);
+		}else{
+			/*deleting root node with no children*/
+			free(*node);
+		}
+	     /*deletingnode with one children*/
+	     }else if (!(*node)->right&&(*node)->left){
+		  /*deleting node with left child alone*/
+		  tmpnode=*node;
+		  (*parent)->right=(*node)->left;
+		  free(tmpnode);
+		  *node=(*parent)->right;
+	     }else if ((*node)->right&&!(*node)->left){
+		   /*deleting node with right child alone*/
+		   tmpnode=*node;
+		   (*parent)->left=(*node)->right;
+		   free(tmpnode);
+		   (*node)=(*parent)->left;
+	     }else if(!(*node)->right->left){
+		    /*
+		     *deleting a node whose right child
+		     *is the smallest node in the reght
+		     *sub tree for the node to be deleted.
+		    */
+		    tmpnode=*node;
+		    (*node)->right->left=(*node)->left;
+		    (*present)->left=(*node)->right;
+		     free(tmpnode);
+		     *node=(*parent)->left;
+	     }else{
+		     /*
+		      *deleting a node with two children.
+		      *first,find the smallest node in
+                      *the right sub tree. replace the
+		      *smallest nodde with the node to be 
+		      *deleted.then,do proper corrections
+		      *for the children of replaced node.
+		     */
+		      tmpnode=(*node)->right;
+		      while(tmpnode->left){
+			 tmpparent=tmpnode;
+			 tmpnode=tmpnode->left;
+		      }
+		      tmpparent->left=tmpnode->right;
+		      tmpnode->left=(*node)->left;
+		      tmpnode->right=(*node)->right;
+		      free(*node);
+		      *node=tmpnode;
+ 		   }
+	     }else if (data<(*node)->data{
+		 /*tranverse towards left subtree*/
+		   deletions (&(*node)->left,node,data);
+	     }else if(data>(*node)->data{
+		 /*travelling towards right subtree*/
+ 		   deletions(&(*node)->right,node,data);
+	     }
+	}	
+		    break;
+
+
+
